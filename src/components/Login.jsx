@@ -7,15 +7,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-
+import { BACKGROUND_IMG, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInform] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -48,7 +46,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/139989063?v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
@@ -61,13 +59,11 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
               setErrorMessage(error.message);
             });
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -83,9 +79,9 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          // const user = userCredential.user;
+          // console.log(user);
+          // navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -103,10 +99,7 @@ const Login = () => {
     <div className="">
       <Header />
       <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/3d31dac6-aaf0-4e6e-8bd7-e16c5d9cd9a3/web/IN-en-20260119-TRIFECTA-perspective_cce70d60-69c5-428f-99cf-44c212fcec3f_large.jpg"
-          alt="background-img"
-        />
+        <img src={BACKGROUND_IMG} alt="background-img" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
