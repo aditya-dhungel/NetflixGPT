@@ -21,6 +21,9 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w780";
 export const GPT_ICON =
   "https://imgs.search.brave.com/Z_n8FLHZHQUUkLP6n6JQBTDoCRhh8mwg35NC_ROvk5o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvY2hhdGdwdC9j/aGF0Z3B0X1BORzUu/cG5n";
 
+export const HOME_ICON =
+  "https://imgs.search.brave.com/aYhH3TxH5Z0DvhOsDtjO9pYHM6FUGhdWDquvQjEq4Yc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjIv/NzUwLzQzNi9zbWFs/bC8zZC1ob21lLWlj/b24tZnJlZS1wbmcu/cG5n";
+
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
   { identifier: "hindi", name: "Hindi" },
