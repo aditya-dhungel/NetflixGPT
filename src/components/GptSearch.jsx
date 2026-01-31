@@ -5,16 +5,40 @@ import { BACKGROUND_IMG } from "../utils/constants";
 
 const GptSearch = () => {
   return (
-    <div>
+    <div className="relative min-h-screen bg-black">
+      {/* Background image layer */}
       <img
         src={BACKGROUND_IMG}
-        className="absolute inset-0 w-full h-full object-cover -z-10"
+        className="fixed inset-0 w-full h-full object-cover opacity-60"
         alt="background-img"
       />
-      <GptSearchBar />
-      <GptMovieSuggestions />
+
+      {/* Dark overlay for Netflix contrast */}
+      <div className="fixed inset-0 bg-black/10"></div>
+
+      {/* Page content */}
+      <div className="relative z-10">
+        <GptSearchBar />
+        <GptMovieSuggestions />
+      </div>
     </div>
   );
 };
+
+// const GptSearch = () => {
+//   return (
+//     <div>
+//       <img
+//         src={BACKGROUND_IMG}
+//         className="fixed inset-0 w-full h-full object-cover -z-10"
+//         alt="background-img"
+//       />
+//       <GptSearchBar />
+//       <GptMovieSuggestions />
+//     </div>
+//   );
+// };
+
+// export default GptSearch;
 
 export default GptSearch;

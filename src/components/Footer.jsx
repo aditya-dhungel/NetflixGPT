@@ -10,7 +10,7 @@ const Footer = () => {
       {/* Content */}
       <div className="relative">
         {/* Brand line */}
-        <h2 className="text-white text-lg md:text-xl font-semibold tracking-wide mb-4 inline-block">
+        <h2 className="text-white text-lg md:text-xl font-semibold tracking-wide mb-4 inline-block cursor-pointer">
           <span className="group inline-flex items-center">
             <span className="inline-block text-red-600 transition-all duration-500 group-hover:rotate-[360deg] group-hover:text-white">
               Netflix
