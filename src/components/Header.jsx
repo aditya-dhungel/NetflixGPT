@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
@@ -16,6 +16,9 @@ import { changeLanguage } from "../utils/configSlice";
 // import "/node_modules/react-tilt-button/dist/react-tilt-button.css";
 
 const Header = () => {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const profileRef = useRef(null);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
@@ -52,6 +55,18 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  //profile signout dropdown
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const handleGptSearchClick = () => {
     //Toggle gpt search
     dispatch(toggleGptSearchView());
@@ -69,11 +84,25 @@ const Header = () => {
         <div className="flex p-2">
           {showGptSearch && (
             <select
-              className="p-2 my-5 mx-2  bg-gray-800 text-white rounded-xl"
+              className="
+              p-2 my-5 mx-2
+              bg-white/5 text-white
+              border border-white/20
+              rounded-xl
+              backdrop-blur-sm
+              focus:outline-none focus:ring-2 focus:ring-gray-400/40
+              hover:bg-white/10
+              transition-all duration-200
+              cursor-pointer
+            "
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.identifier} value={lang.identifier} >
+                <option
+                  key={lang.identifier}
+                  value={lang.identifier}
+                  className="bg-neutral-900 text-white"
+                >
                   {lang.name}
                 </option>
               ))}
@@ -82,34 +111,92 @@ const Header = () => {
 
           {/* GPT/Home button */}
           <button
-            className="w-50 h-10 mt-4 flex items-center gap-1.5 font-semibold text-white bg-green-600 hover:scale-105 hover:bg-green-700 transition-transform duration-200 px-4 py-2 m-4 rounded-full whitespace-nowrap group"
+            className="w-50 h-10 mt-4 flex items-center gap-1.5 font-semibold text-white
+             bg-emerald-500/20 hover:bg-emerald-500/30
+             border border-emerald-400/30 backdrop-blur-sm
+             hover:scale-105 transition-transform duration-200
+             px-4 py-2 m-4 rounded-full whitespace-nowrap group"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Home" : "GPT Search"}
 
             <img
-              className={`object-contain transition-transform duration-500 group-hover:rotate-[360deg] ${
-                showGptSearch ? "w-5 h-5" : "w-8 h-8"
-              }`}
+              className={`object-contain transition-transform duration-500
+               ${!showGptSearch ? "group-hover:rotate-[360deg]" : ""}
+               ${showGptSearch ? "w-5 h-5" : "w-8 h-8"}
+             `}
               src={showGptSearch ? HOME_ICON : GPT_ICON}
               alt={showGptSearch ? "Home icon" : "GPT icon"}
             />
           </button>
 
           {/* Profile icon */}
-          <img
-            src={user?.photoURL}
-            alt="profile icon"
-            className="w-10 h-10 mt-4 mr-2 rounded-3xl ring-2 ring-red-600 "
-          />
-          
-          {/* Sign Out Button */}
-          <button
-            onClick={handleSignOut}
-            className="font-bold text-white bg-red-600 hover:bg-red-700 hover:scale-105 transition-transform duration-200 h-10 w-30 mt-4 ml-1 p-2 rounded-lg"
-          >
-            Sign Out{" "}
-          </button>
+          {/* Profile dropdown */}
+          <div className="relative mt-4 mr-2" ref={profileRef}>
+            {/* Profile icon button */}
+            <button
+              onClick={() => setIsProfileOpen((prev) => !prev)}
+              className="relative group"
+            >
+              {/* Ring */}
+              <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-red-600 via-red-500 to-red-400 p-[2px]">
+                <div className="w-full h-full rounded-full bg-black p-[2px]">
+                  <div className="w-full h-full rounded-full overflow-hidden">
+                    <img
+                      src={user?.photoURL}
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Glow */}
+              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition blur-md bg-red-500/40 -z-10"></div>
+            </button>
+
+            {/* Dropdown */}
+            {isProfileOpen && (
+              <div className="absolute right-0 mt-3 w-72 bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl overflow-hidden animate-slideUp z-50">
+                {/* User info */}
+                <div className="p-4 border-b border-white/10 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+                    <img
+                      src={user?.photoURL}
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="font-semibold text-white truncate">
+                      {user?.displayName || "User"}
+                    </p>
+                    <p className="text-sm text-gray-400 truncate">
+                      {user?.email}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="p-3">
+                  <button
+                    onClick={handleSignOut}
+                    className="w-full px-4 py-3 rounded-xl font-semibold transition active:scale-95
+                     bg-red-600 text-white hover:bg-red-700"
+                  >
+                    Sign Out
+                  </button>
+
+                  <p className="mt-3 text-[11px] text-gray-400 text-center">
+                    You’ll be signed out of NetflixGPT
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

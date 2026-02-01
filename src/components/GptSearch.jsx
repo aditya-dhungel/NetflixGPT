@@ -25,20 +25,4 @@ const GptSearch = () => {
   );
 };
 
-// const GptSearch = () => {
-//   return (
-//     <div>
-//       <img
-//         src={BACKGROUND_IMG}
-//         className="fixed inset-0 w-full h-full object-cover -z-10"
-//         alt="background-img"
-//       />
-//       <GptSearchBar />
-//       <GptMovieSuggestions />
-//     </div>
-//   );
-// };
-
-// export default GptSearch;
-
 export default GptSearch;

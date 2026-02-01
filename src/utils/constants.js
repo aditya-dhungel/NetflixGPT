@@ -40,4 +40,5 @@ export const SUPPORTED_LANGUAGES = [
 export const OPENAI_KEY =
   "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";
 
-export const GEMINI_KEY = "AIzaSyActAo3K_epebGpm9ovhlSesG1sS9kb5Sw";
+// export const GEMINI_KEY = "AIzaSyActAo3K_epebGpm9ovhlSesG1sS9kb5Sw"; //096 api
+export const GEMINI_KEY = "AIzaSyAbmCWY8e0kYKxhbQErFGn5XqfAMVRGx8I";    //123 api

@@ -30,6 +30,9 @@ const gptSlice = createSlice({
     setGptError: (state, action) => {
       state.error = action.payload;
     },
+    clearError: (state) => {
+      state.error = null;
+    },
   },
 });
 

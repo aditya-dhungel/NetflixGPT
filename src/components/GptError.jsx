@@ -1,6 +1,10 @@
 import React from "react";
+import lang from "../utils/languageConstants";
+import { useSelector } from "react-redux";
 
 const GptError = ({ message }) => {
+  const langKey = useSelector((store) => store.config.lang);
+
   return (
     <div className="relative mx-auto my-10 max-w-xl w-full px-6 animate-fade-in">
       <div className="relative p-8 rounded-2xl overflow-hidden">
@@ -19,18 +23,17 @@ const GptError = ({ message }) => {
 
           {/* Title */}
           <h2 className="text-2xl font-semibold tracking-wide">
-            Unable to fetch results
+            {lang[langKey].gptErrorTitle}
           </h2>
 
           {/* Message */}
           <p className="mt-3 text-gray-300 text-sm leading-relaxed">
-            {message ||
-              "We couldn’t load movie suggestions at the moment. This may be a temporary issue."}
+            {message || lang[langKey].gptErrorFallback}
           </p>
 
           {/* Hint */}
           <p className="mt-2 text-xs text-gray-400">
-            Try searching again or adjust your query.
+            {lang[langKey].gptErrorHint}
           </p>
         </div>
       </div>

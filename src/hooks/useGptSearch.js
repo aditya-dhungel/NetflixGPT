@@ -7,6 +7,8 @@ import {
   setGptLoading,
   setGptError,
 } from "../utils/gptSlice";
+import lang from "../utils/languageConstants";
+import { useSelector } from "react-redux";
 
 /*
   WHY THIS HOOK WAS MADE:
@@ -16,6 +18,7 @@ import {
 
 const useGptSearch = () => {
   const dispatch = useDispatch();
+  const langKey = useSelector((store) => store.config.lang);
 
   //search the movies returned by gemini api inside tmdb api
   const searchMoviesTMDB = async (movie) => {
@@ -50,7 +53,7 @@ const useGptSearch = () => {
   const handleGptSearch = async (query) => {
     // if empty search
     if (!query) {
-      dispatch(setGptError("Please enter a movie, genre, or mood to search."));
+      dispatch(setGptError(lang[langKey].emptySearchError));
       return;
     }
 
