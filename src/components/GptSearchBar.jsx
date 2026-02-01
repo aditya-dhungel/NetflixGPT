@@ -15,7 +15,7 @@ const GptSearchBar = () => {
 
   return (
     <div className="pt-[7%] flex flex-col items-center">
-      {/* AI Search Info */}
+      {/*Search feature Info */}
       <div className="mb-5 flex justify-center">
         <div className="px-6 py-3 rounded-2xl bg-black/70 border border-white/10 backdrop-blur-sm">
           <p className="text-base font-medium text-gray-100 tracking-wide text-center">
@@ -55,7 +55,7 @@ const GptSearchBar = () => {
             searchText.current.value = "";
             dispatch(clearGptResults());
           }}
-          className="w-20 h-20 p-1 ml-3 mt-1 bg-neutral-800/70 rounded-full border border-neutral-700 hover:bg-neutral-900/80 hover:scale-[1.03] transition-all duration-300"
+          className="w-16 h-16 p-1 ml-3 mt-3 bg-neutral-800/70 rounded-3xl border border-neutral-700 hover:bg-neutral-900/80 hover:scale-[1.03] transition-all duration-300"
         >
           <img src={DELETE_ICON} alt="delete" className="mx-auto h-18 w-18" />
         </button>
