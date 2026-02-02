@@ -44,7 +44,7 @@ const ProfileMenu = () => {
       {/* Profile icon */}
       <button
         onClick={() => setIsProfileOpen((prev) => !prev)}
-        className="relative group"
+        className="relative group mb-4"
       >
         {/* Ring */}
         <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-red-600 via-red-500 to-red-400 p-[2px]">
@@ -66,7 +66,7 @@ const ProfileMenu = () => {
 
       {/* Dropdown */}
       {isProfileOpen && (
-        <div className="absolute right-0 mt-3 w-72 bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl overflow-hidden animate-slideUp z-50">
+        <div className="absolute right-0 w-72 bg-black/50 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl overflow-hidden animate-slideUp z-50">
           {/* User info */}
           <div className="p-4 border-b border-white/10 flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20">

@@ -22,18 +22,25 @@ const useGptSearch = () => {
 
   //search the movies returned by gemini api inside tmdb api
   const searchMoviesTMDB = async (movie) => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/search/movie?query=" +
-        encodeURIComponent(movie) +
-        "&include_adult=false&language=en-US&page=1",
-      API_OPTIONS
-    );
+    try {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/search/movie?query=" +
+          encodeURIComponent(movie) +
+          "&include_adult=false&language=en-US&page=1",
+        API_OPTIONS
+      );
 
-    const json = await data.json();
+      if (!response.ok) {
+        throw new Error("TMDB_ERROR");
+      }
 
-    // Return ONLY the most relevant match
-    // return json.results?.length ? [json.results[0]] : [];
-    return json.results;
+      const json = await response.json();
+      // Return ONLY the most relevant match
+      // return json.results?.length ? [json.results[0]] : [];
+      return json.results;
+    } catch (error) {
+      throw new Error("VPN_REQUIRED");
+    }
   };
 
   // const searchMoviesTMDB = async (movie) => {
@@ -47,10 +54,9 @@ const useGptSearch = () => {
   //   return json.results;
   // };
 
-
-
   //Openai/gemini gpt search functionality
   const handleGptSearch = async (query) => {
+    
     // if empty search
     if (!query) {
       dispatch(setGptError(lang[langKey].emptySearchError));

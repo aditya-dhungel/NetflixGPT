@@ -1,11 +1,10 @@
 const Logo = () => {
-
   return (
     <h1
-      className="flex items-center justify-center text-5xl font-medium tracking-tight cursor-pointer"
+      className="text-center text-5xl tracking-tight font-bold cursor-pointer"
     >
       <span className="text-red-600">Netflix</span>
-      <span className="text-white ml-1 tracking-wide">GPT</span>
+      <span className="text-white">GPT</span>
     </h1>
   );
 };
