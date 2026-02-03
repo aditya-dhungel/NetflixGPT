@@ -124,11 +124,11 @@ const Login = () => {
     <div className="">
       <Header />
       <div className="fixed">
-        <img src={BACKGROUND_IMG} alt="background-img" />
+        <img className="h-screen object-cover" src={BACKGROUND_IMG} alt="background-img" />
       </div>
       <div className="relative">
         {/* Disclaimer (OUTSIDE form) */}
-        <div className="w-3/12 absolute top-20 right-0 left-0 mx-auto mb-3">
+        <div className="md:mt-0 mt-8 w-10/12 md:w-3/12 absolute top-20 right-0 left-0 mx-auto mb-3">
           <div className="flex items-center gap-2 rounded-lg border border-red-400/50 bg-gradient-to-r from-red-600/25 via-red-500/15 to-red-600/25 px-4 py-2 text-xs text-red-100 backdrop-blur-sm shadow-[0_0_16px_rgba(229,9,20,0.35)] animate-[slideDown_0.5s_ease-out]">
             <p className="text-center leading-snug">
               ⚠️ Some content may not load in certain regions. Please use a VPN

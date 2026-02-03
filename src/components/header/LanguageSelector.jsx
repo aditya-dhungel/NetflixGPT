@@ -13,7 +13,8 @@ const LanguageSelector = () => {
     <select
       onChange={handleLanguageChange}
       className="
-        p-2 my-5 mx-2
+        p-1 md:p-2 md:ml-0 ml-12 md:my-5 w-[4.9rem] -translate-y-1 md:translate-y-0
+         text-xs md:text-md h-7 md:w-full md:h-auto
         bg-white/5 text-white
         border border-white/20
         rounded-xl

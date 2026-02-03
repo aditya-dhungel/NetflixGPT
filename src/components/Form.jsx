@@ -13,7 +13,7 @@ const Form = ({
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className="w-3/12 absolute top-36 left-1/2 -translate-x-1/2 rounded-2xl bg-black/60 backdrop-blur-md px-10 py-7 text-white shadow-[0_8px_30px_rgba(0,0,0,0.6)] max-h-[85vh] overflow-y-auto"
+      className="md:mt-0 mt-12 w-10/12 md:w-3/12 absolute top-36 left-1/2 -translate-x-1/2 rounded-2xl bg-black/60 backdrop-blur-md px-10 py-7 text-white shadow-[0_8px_30px_rgba(0,0,0,0.6)] max-h-[85vh] overflow-y-auto"
     >
       <h1 className="mb-1 text-center text-3xl font-bold">
         <span className="text-red-600">Netflix</span>

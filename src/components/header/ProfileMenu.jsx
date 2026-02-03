@@ -40,14 +40,14 @@ const ProfileMenu = () => {
   if (!user) return null;
 
   return (
-    <div className="relative mt-4 mr-2" ref={profileRef}>
+    <div className="relative md:mt-4 md:mr-2" ref={profileRef}>
       {/* Profile icon */}
       <button
         onClick={() => setIsProfileOpen((prev) => !prev)}
-        className="relative group mb-4"
+        className="relative group md:mt-0 -mt-2 md:mb-4"
       >
         {/* Ring */}
-        <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-red-600 via-red-500 to-red-400 p-[2px]">
+        <div className="md:-mr-4 w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-tr from-red-600 via-red-500 to-red-400 p-[2px]">
           <div className="w-full h-full rounded-3xl bg-black p-[2px]">
             <div className="w-full h-full rounded-full overflow-hidden">
               <img
@@ -66,7 +66,7 @@ const ProfileMenu = () => {
 
       {/* Dropdown */}
       {isProfileOpen && (
-        <div className="absolute right-0 w-72 bg-black/50 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl overflow-hidden animate-slideUp z-50">
+        <div className="absolute right-0 w-62 md:w-72 bg-black/50 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl overflow-hidden animate-slideUp z-50">
           {/* User info */}
           <div className="p-4 border-b border-white/10 flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20">

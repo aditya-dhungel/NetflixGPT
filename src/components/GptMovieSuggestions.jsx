@@ -23,7 +23,7 @@ const GptMovieSuggestions = () => {
   return (
     <div className="relative p-4 m-4 mb-4 z-10">
       {/* Translucent background */}
-      <div className="absolute inset-0 bg-black/70 rounded-3xl"></div>
+      <div className="absolute inset-0 bg-black/70 rounded-3xl backdrop-blur-sm"></div>
 
       {/* Content (fully opaque) */}
       <div className="relative text-white">

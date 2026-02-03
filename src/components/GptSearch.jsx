@@ -9,7 +9,7 @@ const GptSearch = () => {
       {/* Background image layer */}
       <img
         src={BACKGROUND_IMG}
-        className="fixed inset-0 w-full h-full object-cover opacity-60"
+        className="fixed inset-0 w-screen h-screen object-cover opacity-80"
         alt="background-img"
       />
 

@@ -7,7 +7,7 @@ const GptError = ({ message }) => {
 
   return (
     <div className="relative mx-auto my-10 max-w-xl w-full px-6 animate-fade-in">
-      <div className="relative p-8 rounded-2xl overflow-hidden">
+      <div className="relative p-8 rounded-3xl overflow-hidden backdrop-blur-sm">
         {/* Glass backdrop */}
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm rounded-2xl"></div>
 
