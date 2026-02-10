@@ -37,6 +37,8 @@ This project demonstrates real-world frontend architecture, API integration, aut
 
 ### Gemini Movie Search
 ![Gemini Search](screenshots/gpt-search.png)
+
+### Gemini Movies
 ![Gemini Search](screenshots/gpt-search1.png)
 
 ---
