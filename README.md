@@ -27,8 +27,6 @@ This project demonstrates real-world frontend architecture, API integration, aut
 
 ## Screenshots
 
-> Screenshots are stored inside the `screenshots/` directory.
-
 ### Authentication
 ![Login Page](screenshots/login.png)
 
