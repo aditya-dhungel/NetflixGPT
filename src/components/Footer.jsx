@@ -1,4 +1,5 @@
 import React from "react";
+import { ScrambleText } from "./scramble-text";
 
 const Footer = () => {
   return (
@@ -12,12 +13,7 @@ const Footer = () => {
         {/* Brand line */}
         <h2 className="text-white text-lg md:text-xl font-semibold tracking-wide mb-4 inline-block cursor-pointer">
           <span className="group inline-flex items-center">
-            <span className="inline-block text-red-600 transition-all duration-500 group-hover:rotate-[360deg] group-hover:text-white">
-              Netflix
-            </span>
-            <span className="inline-block text-white transition-all duration-500 group-hover:rotate-[360deg] group-hover:text-red-600">
-              GPT
-            </span>
+            <ScrambleText text="NetflixGPT" />
           </span>
         </h2>
 
