@@ -69,7 +69,6 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(getAuthErrorMessage(error));
             });
-            
         })
         // .catch((error) => {
         //   const errorCode = error.code;
@@ -107,13 +106,14 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       setErrorMessage(null);
+
+      // eslint-disable-next-line no-unused-vars
       const result = await signInWithPopup(auth, googleProvider);
       // console.log("Google user:", result.user);
       navigate("/browse"); // or "/"
     } catch (error) {
       setErrorMessage(getAuthErrorMessage(error));
     }
-    
   };
 
   const toggleSignInform = () => {
@@ -124,7 +124,11 @@ const Login = () => {
     <div className="">
       <Header />
       <div className="fixed">
-        <img className="h-screen object-cover" src={BACKGROUND_IMG} alt="background-img" />
+        <img
+          className="h-screen object-cover"
+          src={BACKGROUND_IMG}
+          alt="background-img"
+        />
       </div>
       <div className="relative">
         {/* Disclaimer (OUTSIDE form) */}

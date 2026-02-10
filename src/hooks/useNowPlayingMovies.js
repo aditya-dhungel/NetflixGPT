@@ -22,10 +22,10 @@ const useNowPlayingMovies = () => {
 
   useEffect(() => {
     // if (!nowPlayingMovies) getNowPlayingMovies();
-    
+
     //same code in diff syntax
     !nowPlayingMovies && getNowPlayingMovies();
-  }, []);
+  });
 };
 
 export default useNowPlayingMovies;
