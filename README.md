@@ -36,10 +36,10 @@ This project demonstrates real-world frontend architecture, API integration, aut
 ![Browse Page](screenshots/browse.png)
 
 ### Gemini Movie Search
-![Gemini Search](screenshots/gpt-search.png)
+![Gemini Search](screenshots/search.png)
 
 ### Gemini Movies
-![Gemini Search](screenshots/gpt-search1.png)
+![Gemini Search](screenshots/search1.png)
 
 ---
 
