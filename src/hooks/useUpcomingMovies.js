@@ -6,7 +6,7 @@ import { useEffect } from "react";
 const useUpcomingMovies = () => {
   const dispatch = useDispatch();
 
-  const upcomingMovies = useSelector((store) => store.movies.nowPlayingMovies);
+  const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
 
 
   const getUpcomingMovies = async () => {
