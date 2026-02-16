@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
@@ -12,8 +12,11 @@ import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import { useSelector } from "react-redux";
 import GptSearch from "./GptSearch";
 
+import VpnWarning from "./VpnWarning";
+
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const [showVpnWarning, setShowVpnWarning] = useState(false);
 
   useNowPlayingMovies();
   usePopularMovies();
@@ -29,9 +32,23 @@ const Browse = () => {
     topRatedMovies?.length &&
     upcomingMovies?.length;
 
+  useEffect(() => {
+    if (!isDataLoaded) {
+      const timer = setTimeout(() => {
+        setShowVpnWarning(true);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowVpnWarning(false);
+    }
+  }, [isDataLoaded]);
+
   return (
     <div>
       <Header />
+      {showVpnWarning && <VpnWarning />}
+
       {showGptSearch ? (
         <>
           {" "}

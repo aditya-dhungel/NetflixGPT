@@ -11,19 +11,19 @@ const ProfileMenu = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
 
-//   const handleSignOut = () => {
-//     signOut(auth).catch(() => {
-//       navigate("/error");
-//     });
-//   };
+  //   const handleSignOut = () => {
+  //     signOut(auth).catch(() => {
+  //       navigate("/error");
+  //     });
+  //   };
   const handleSignOut = () => {
-      signOut(auth)
-        .then(() => {})
-        .catch((error) => {
-          // An error happened.
-          navigate("/error");
-        });
-    };
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {
+        // An error happened.
+        navigate("/error");
+      });
+  };
 
   // close dropdown on outside click
   useEffect(() => {
@@ -41,6 +41,7 @@ const ProfileMenu = () => {
 
   return (
     <div className="relative md:mt-4 md:mr-2" ref={profileRef}>
+      {" "}
       {/* Profile icon */}
       <button
         onClick={() => setIsProfileOpen((prev) => !prev)}
@@ -63,7 +64,6 @@ const ProfileMenu = () => {
         {/* Glow */}
         <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition blur-md bg-red-500/40 -z-10"></div>
       </button>
-
       {/* Dropdown */}
       {isProfileOpen && (
         <div className="absolute right-0 w-62 md:w-72 bg-black/50 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl overflow-hidden animate-slideUp z-50">

@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
-import { DELETE_ICON } from "../utils/constants";
 import { clearGptResults } from "../utils/gptSlice";
 import useGptSearch from "../hooks/useGptSearch";
 
@@ -13,51 +12,107 @@ const GptSearchBar = () => {
   // GPT search logic moved to custom hook
   const { handleGptSearch } = useGptSearch();
 
+  const handleClear = () => {
+    searchText.current.value = "";
+    dispatch(clearGptResults());
+  };
+
   return (
-    <div className="pt-[20%] md:pt-[7%] flex flex-col items-center">
-      {/*Search feature Info */}
-      <div className="mb-5 flex justify-center">
-        <div className="mx-4 px-6 py-3 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm">
-          <p className="md:text-lg text-sm font-thin md:font-medium text-gray-100 tracking-wide text-center">
-            {/* "Search movies by name, plot, genre, mood, or anything you can describe!" */}
+    <div className="pt-[25%] md:pt-[7%] flex flex-col items-center px-3 md:px-4">
+      {/* Search feature Info */}
+      <div className="mb-6 md:mb-10 flex justify-center w-full max-w-5xl">
+        <div className="px-4 py-1 md:px-8 md:py-3 rounded-2xl md:rounded-3xl bg-black/40 border border-white/20 backdrop-blur-xl shadow-2xl">
+          <p className="text-xs md:text-lg font-medium text-gray-100 tracking-wide text-center leading-relaxed">
             {lang[langKey].gptSearchInfo}
           </p>
         </div>
       </div>
 
-      <div className="flex justify-center w-full">
+      {/* Search Bar Container */}
+      <div className="flex items-stretch justify-center w-full max-w-5xl gap-3 md:gap-4">
         <form
-          className="relative w-10/12 ml-3 md:w-1/2 grid grid-cols-12 rounded-full h-auto md:h-full"
+          className="relative flex-1 flex items-center rounded-full bg-black/40 backdrop-blur-xl border border-white/20 shadow-2xl hover:border-white/40 hover:shadow-red-500/20 transition-all duration-300 group overflow-hidden"
           onSubmit={(e) => e.preventDefault()}
         >
-          {/* Translucent background ONLY */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-full"></div>
+          {/* Glowing effect on hover */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/0 via-red-500/10 to-red-500/0 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none"></div>
 
+          {/* Search Icon Left */}
+          <div className="pl-4 md:pl-7 text-gray-400 group-hover:text-white transition-colors duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 md:h-6 md:w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+
+          {/* Input Field */}
           <input
             ref={searchText}
             type="text"
             placeholder={lang[langKey].gptSearchPlaceholder}
-            className="relative col-span-9 h-9 md:h-auto py-2 md:p-4 px-4 m-4 rounded-3xl text-xs md:text-base text-black"
+            className="flex-1 bg-transparent text-white placeholder-gray-400 px-3 py-3 md:px-4 md:py-5 text-sm md:text-base outline-none"
           />
 
+          {/* Search Button */}
           <button
-            className="text-center text-xs md:text-lg relative col-span-3 m-4 mx-1 px-4 mr-3 -ml-2 md:ml-0 md:mr-5 bg-red-600 text-white rounded-3xl hover:bg-red-700 hover:scale-105 transition-transform duration-500"
+            type="submit"
+            className="m-1.5 md:m-2 px-4 md:px-10 py-2.5 md:py-4 bg-gradient-to-r from-red-600 to-red-700 text-white text-xs md:text-base font-semibold rounded-full hover:from-red-700 hover:to-red-800 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-lg hover:shadow-red-500/50 flex items-center gap-1.5 md:gap-2 group/btn whitespace-nowrap"
             onClick={() => handleGptSearch(searchText.current?.value?.trim())}
           >
-            {lang[langKey].search}
+            <span>{lang[langKey].search}</span>
+            {/* Search icon in button */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-3.5 w-3.5 md:h-5 md:w-5 group-hover/btn:scale-110 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </button>
         </form>
 
-        {/* Delete button */}
+        {/* Clear Button - SVG X icon */}
         <button
           type="button"
-          onClick={() => {
-            searchText.current.value = "";
-            dispatch(clearGptResults());
-          }}
-          className="w-12 md:w-16 h-12 md:h-16 p-1 md:ml-3 md:mr-0 mr-2 ml-1 md:mt-3 mt-3 bg-neutral-800/70 rounded-3xl backdrop-blur-sm border border-neutral-700 hover:bg-neutral-900/80 hover:scale-[1.03] transition-all duration-300"
+          onClick={handleClear}
+          className="relative flex-shrink-0 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-black/40 backdrop-blur-xl rounded-full border border-white/20 hover:border-red-500/50 hover:bg-red-900/30 active:scale-95 transition-all duration-300 group/clear shadow-xl hover:shadow-red-500/30"
+          title="Clear search"
         >
-          <img src={DELETE_ICON} alt="delete" className="mx-auto h-18 w-18" />
+          {/* Glow effect on hover */}
+          <div className="absolute inset-0 rounded-full bg-red-500/0 group-hover/clear:bg-red-500/20 blur-md transition-all duration-300 -z-10"></div>
+          
+          {/* X icon - SVG */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 md:h-7 md:w-7 text-gray-400 group-hover/clear:text-red-500 group-hover/clear:rotate-90 transition-all duration-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
         </button>
       </div>
     </div>

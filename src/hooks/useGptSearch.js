@@ -66,7 +66,7 @@ const useGptSearch = () => {
     try {
       dispatch(setGptLoading(true));
 
-      console.log(query);
+      // console.log(query);
 
       const gptQuery =
         'Suggest up to 10 movies (if asked specifically about certian movie/movies than give specific results only otherwise give upto 10 results) based on the following user query: "' +
@@ -91,12 +91,12 @@ const useGptSearch = () => {
 
       // console.log(gptResults.output_text);
       // console.log(gptResults.choices);
-      console.log(gptResults.text);
+      // console.log(gptResults.text);
 
       const gptMovies = gptResults.text.split(",").map((movie) => movie.trim());
 
       //gives movie list in array
-      console.log(gptMovies);
+      // console.log(gptMovies);
 
       //Search each movie in tmdb api
       const promiseArray = gptMovies.map((movie) => searchMoviesTMDB(movie));
@@ -104,7 +104,7 @@ const useGptSearch = () => {
       // promises: [Promise, Promise, Promise, Promise, Promise, Promise, Promise, Promise, Promise, Promise, Promise,]
 
       const tmdbResults = await Promise.all(promiseArray);
-      console.log(tmdbResults);
+      // console.log(tmdbResults);
 
       //adding gpt search movies to redux store
       dispatch(

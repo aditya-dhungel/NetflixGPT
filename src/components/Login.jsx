@@ -125,7 +125,7 @@ const Login = () => {
       <Header />
       <div className="fixed">
         <img
-          className="h-screen object-cover"
+          className="h-screen w-screen object-cover"
           src={BACKGROUND_IMG}
           alt="background-img"
         />

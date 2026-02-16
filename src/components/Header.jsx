@@ -48,9 +48,12 @@ const Header = () => {
       {/* Right section */}
       {user && (
         <div className="flex p-2 items-center">
-
-          {/* Language selector */}
-          {showGptSearch && <LanguageSelector />}
+          {/* Language selector - maintain space when hidden */}
+          {showGptSearch ? (
+            <LanguageSelector />
+          ) : (
+            <div className="w-[5.0rem] md:w-[5.5rem]"></div>
+          )}
 
           {/* GPT / Home toggle */}
           <GptToggleButton />
