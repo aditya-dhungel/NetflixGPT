@@ -23,6 +23,7 @@ const Footer = () => {
           built for learning and experimentation.
         </p>
 
+
         {/* Links */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-4 gap-x-8 text-sm">
           {[

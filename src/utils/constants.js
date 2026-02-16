@@ -1,11 +1,12 @@
+import bgImage from "../assets/netflix_background.jpg";
+
 export const LOGO =
   "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg";
 
 export const USER_AVATAR =
   "https://i.pinimg.com/736x/91/86/1b/91861b749841221d52122f0c2933d8a6.jpg";
 
-export const BACKGROUND_IMG =
-  "https://assets.nflxext.com/ffe/siteui/vlv3/3d31dac6-aaf0-4e6e-8bd7-e16c5d9cd9a3/web/IN-en-20260119-TRIFECTA-perspective_cce70d60-69c5-428f-99cf-44c212fcec3f_large.jpg";
+  export const BACKGROUND_IMG = bgImage;
 
 export const DELETE_ICON =
   "https://imgs.search.brave.com/8PCH5hgziTEj64aTM3g4jYvMtA5B8okyCM8QtHCj3ns/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDcv/MjQ4LzA4OS9zbWFs/bC9jcm9zcy1tYXJr/LWljb24tM2QtcmVu/ZGVyLWNvbmNlcHQt/b2YtcmVqZWN0aW9u/LWZhbHNlLWRlbGV0/ZS1hbmQtaW52YWxp/ZC1pY29uLWlsbHVz/dHJhdGlvbi1wbmcu/cG5n";
